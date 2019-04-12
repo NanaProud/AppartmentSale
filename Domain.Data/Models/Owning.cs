@@ -16,5 +16,25 @@ namespace Domain.Data.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        /// <summary>
+        /// Id Владельца
+        /// </summary>
+        public int OwnerId { get; set; }
+        [ForeignKey("OwnerId")]
+        public Owner Owner { get; set; }
+
+        public int AppartmentId { get; set; }
+        [ForeignKey("AppartmentId")]
+        public Appartment Appartment { get; set; }
+
+        public DateTime DateStartOwning { get; set; }
+
+        public DateTime? DateFinishOwning { get; set; }
+
+        /// <summary>
+        /// Доля владения
+        /// </summary>
+        public float ShareOwning { get; set; }
+
     }
 }

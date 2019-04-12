@@ -9,7 +9,10 @@ namespace Domain.Data
     {
         public DbSet<Appartment> Appartments { get; set; }
         public DbSet<Area> Areas { get; set; }
-        //public Db
+        public DbSet<Owner> Owners { get; set; }
+        public DbSet<Owning> Ownings { get; set; }
+        public DbSet<Street> Streets { get; set; }
+        public DbSet<TypeDocument> TypeDocuments { get; set; }
 
         public AppartmentContext() : base("OracleDbContext")
         {
