@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,5 +23,6 @@ namespace Domain.Data
 
         public int Flat { get; set; }
 
+        public virtual ICollection<Owning> Owners { get; set; }
     }
 }

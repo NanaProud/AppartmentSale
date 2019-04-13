@@ -5,14 +5,14 @@ namespace AppartmentSale.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<AppartmentSale.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Domain.Data.AppartmentContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(AppartmentSale.Models.ApplicationDbContext context)
+        protected override void Seed(Domain.Data.AppartmentContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -41,5 +41,7 @@ namespace Domain.Data
 
         [Required]
         public string DocumentNumber { get; set; }
+
+        public virtual ICollection<Owning> Appartments { get; set; }
     }
 }
