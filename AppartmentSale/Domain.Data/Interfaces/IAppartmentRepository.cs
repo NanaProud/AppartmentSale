@@ -1,9 +1,8 @@
-﻿using Domain.Data.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Data.Interfaces
+namespace Domain.Data
 {
     /// <summary>
     /// Интерфейс репозитория для работы с сущностью "Квартиры"

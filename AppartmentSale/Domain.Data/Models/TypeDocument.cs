@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace Domain.Data.Models
+using System.Text;
+
+namespace Domain.Data
 {
     /// <summary>
-    /// Класс для сущности "Район"
+    /// Класс для описания сущности тип документа
     /// </summary>
-    public class Area
+    public class TypeDocument
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
-        public string Ttile { get; set; }
-
-        public virtual IEnumerable<Street> Streets { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Text;
-using Domain.Data.Models;
+
 namespace Domain.Data
 {
     public class AppartmentContext : DbContext
@@ -14,9 +14,6 @@ namespace Domain.Data
         public DbSet<Street> Streets { get; set; }
         public DbSet<TypeDocument> TypeDocuments { get; set; }
 
-        public AppartmentContext() : base("OracleDbContext")
-        {
-            Database.Exists();
-        }
+        public AppartmentContext() : base("OracleDbContext") { }
     }
 }

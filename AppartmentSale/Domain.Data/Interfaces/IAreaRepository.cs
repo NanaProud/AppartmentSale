@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Data.Models;
 
-namespace Domain.Data.Interfaces
+namespace Domain.Data
 {
     /// <summary>
     /// Интерфейс сервиса, определяющий базовые манипуляции с сущностью "Район"

@@ -4,7 +4,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Data.Models
+namespace Domain.Data
 {
     /// <summary>
     /// Класс для описания сущности "Владелец"

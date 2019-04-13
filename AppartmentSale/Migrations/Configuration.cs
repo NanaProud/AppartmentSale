@@ -9,7 +9,7 @@ namespace AppartmentSale.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(AppartmentSale.Models.ApplicationDbContext context)

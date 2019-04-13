@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Data.Interfaces
+namespace Domain.Data
 {
     /// <summary>
     /// Базовый репозиторий для репозиторий всех сущностей

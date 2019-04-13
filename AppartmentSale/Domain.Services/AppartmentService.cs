@@ -2,8 +2,6 @@
 using System.Data.Entity;
 using System.Threading.Tasks;
 using Domain.Data;
-using Domain.Data.Interfaces;
-using Domain.Data.Models;
 
 namespace Domain.Services
 {

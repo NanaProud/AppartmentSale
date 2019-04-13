@@ -182,12 +182,28 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Domain.Data\AppartmentContext.cs" />
+    <Compile Include="Domain.Data\Interfaces\IAppartmentRepository.cs" />
+    <Compile Include="Domain.Data\Interfaces\IAreaRepository.cs" />
+    <Compile Include="Domain.Data\Interfaces\IOwnerRepository.cs" />
+    <Compile Include="Domain.Data\Interfaces\IOwningRepository.cs" />
+    <Compile Include="Domain.Data\Interfaces\IRepository.cs" />
+    <Compile Include="Domain.Data\Interfaces\IStreetRepository.cs" />
+    <Compile Include="Domain.Data\Interfaces\ITypeDocumentRepository.cs" />
+    <Compile Include="Domain.Data\Models\Appartment.cs" />
+    <Compile Include="Domain.Data\Models\Area.cs" />
+    <Compile Include="Domain.Data\Models\Owner.cs" />
+    <Compile Include="Domain.Data\Models\Owning.cs" />
+    <Compile Include="Domain.Data\Models\Street.cs" />
+    <Compile Include="Domain.Data\Models\TypeDocument.cs" />
+    <Compile Include="Domain.Services\AppartmentService.cs" />
+    <Compile Include="Domain.Services\OwnerService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904111751500_Initial.cs" />
-    <Compile Include="Migrations\201904111751500_Initial.Designer.cs">
-      <DependentUpon>201904111751500_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201904131741026_ApplicationContext.cs" />
+    <Compile Include="Migrations\201904131741026_ApplicationContext.Designer.cs">
+      <DependentUpon>201904131741026_ApplicationContext.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -273,8 +289,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904111751500_Initial.resx">
-      <DependentUpon>201904111751500_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904131741026_ApplicationContext.resx">
+      <DependentUpon>201904131741026_ApplicationContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
