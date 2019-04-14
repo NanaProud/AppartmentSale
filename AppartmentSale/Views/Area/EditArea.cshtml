@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Редактирование района";
+}
+
+@model Domain.Data.Area
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("EditArea", "Area", FormMethod.Post))
+            {
+                @Html.HiddenFor(p => p.Id)
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Ttile)
+                    @Html.TextBoxFor(p => p.Ttile, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Ttile)
+                </div>
+                <button class="btn btn-success" type="submit">Добавить</button>
+            }
+        </div>
+    </div>
+</div>

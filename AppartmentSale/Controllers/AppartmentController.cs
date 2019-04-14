@@ -15,7 +15,7 @@ namespace AppartmentSale.Controllers
     /// <summary>
     /// Класс-контроллер для обработки
     /// </summary>
-    public class HomeController : Controller
+    public class AppartmentController : Controller
     {
         private static int _pageSize = 6;
         private readonly IAppartmentRepository appartmentRepository;
@@ -28,7 +28,7 @@ namespace AppartmentSale.Controllers
         /// <param name="appartmentRepository"></param>
         /// <param name="viewModelParser"></param>
         /// <param name="streetRepository"></param>
-        public HomeController(IAppartmentRepository appartmentRepository, ViewModelParser.ViewModelParser viewModelParser, IStreetRepository streetRepository)
+        public AppartmentController(IAppartmentRepository appartmentRepository, ViewModelParser.ViewModelParser viewModelParser, IStreetRepository streetRepository)
         {
             this.appartmentRepository = appartmentRepository;
             this.viewModelParser = viewModelParser;
@@ -64,7 +64,7 @@ namespace AppartmentSale.Controllers
         {
             CreateAppartmentViewModel model = new CreateAppartmentViewModel();
             var listStreets = streetRepository.GetAll();
-            model.Streets = new SelectList(listStreets, "Id", "Name");
+            model.Streets = new SelectList(listStreets, "Id", "Title");
             return View(model);
         }
 

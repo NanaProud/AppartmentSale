@@ -22,6 +22,7 @@ namespace AppartmentSale.Util
             Bind<IAppartmentRepository>().To<AppartmentService>();
             Bind<IOwnerRepository>().To<OwnerService>();
             Bind<IStreetRepository>().To<StreetService>();
+            Bind<IAreaRepository>().To<AreaService>();
         }
     }
 }

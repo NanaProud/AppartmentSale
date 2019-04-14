@@ -1,0 +1,51 @@
+﻿@model PagedList.IPagedList<Domain.Data.Area>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Список районов";
+}
+
+<h2>Список квартир</h2>
+
+@Html.ActionLink("Добавить район", "CreateArea", "Area", null, new { @class = "btn btn-danger" })
+
+<div class="container" style="margin-top:1rem;">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>Название</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @item.Ttile
+                        </td>
+                        <td>
+                            @Html.ActionLink("Редактирование", "EditArea", "Area", new { id = item.Id }, new { @class = "btn btn-success" })
+                        </td>
+                        <td>
+                            <a href="/Area/Delete/@item.Id" id="deleteArea" class="btn btn-danger">Удалить</a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            <br />
+            Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="@Url.Content("/Scripts/Javascripts/Area.js")" type="text/javascript"></script>
+}

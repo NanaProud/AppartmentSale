@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -14,29 +15,53 @@ namespace AppartmentSale.Domain.Services
     {
         private readonly AppartmentContext _appartmentContext;
 
+        /// <summary>
+        /// Добавление зависимости
+        /// </summary>
+        /// <param name="appartmentContext"></param>
         public StreetService(AppartmentContext appartmentContext)
         {
             _appartmentContext = appartmentContext;
         }
 
-        public Task Add(Street entity)
+        /// <summary>
+        /// Добавление Улицы в базу
+        /// </summary>
+        /// <param name="entity">Сущность для добавления</param>
+        /// <returns></returns>
+        public async Task Add(Street entity)
         {
-            throw new NotImplementedException();
+            _appartmentContext.Streets.Add(entity);
+            await _appartmentContext.SaveChangesAsync();
         }
 
-        public Task Delete(int id)
+        /// <summary>
+        /// Удаление улицы по Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var deleteStreet = await _appartmentContext.Streets.FindAsync(id);
+            if (deleteStreet != null)
+                _appartmentContext.Streets.Remove(deleteStreet);
         }
 
-        public Task Edit(Street entity)
+        /// <summary>
+        /// Редактирование улицы
+        /// </summary>
+        /// <param name="entity">Сущность для редактирования</param>
+        /// <returns></returns>
+        public async Task Edit(Street entity)
         {
-            throw new NotImplementedException();
+            _appartmentContext.Entry(entity).State = EntityState.Modified;
+            await _appartmentContext.SaveChangesAsync();
         }
 
-        public Task<Street> Get(int id)
+        public async Task<Street> Get(int id)
         {
-            throw new NotImplementedException();
+            var street = await _appartmentContext.Streets.FindAsync(id);
+            return street;
         }
 
         /// <summary>

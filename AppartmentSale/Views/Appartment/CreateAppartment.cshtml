@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Создание квартиры";
+}
+@model AppartmentSale.ViewModels.CreateAppartmentViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("CreateAppartment", "Home", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(p => p.StreetId)
+                    @Html.DropDownListFor(p => p.StreetId, Model.Streets, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Building)
+                    @Html.TextBoxFor(p => p.Building, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Flat)
+                    @Html.TextBoxFor(p => p.Building, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(p => p.HouseNumber)
+                    @Html.TextBoxFor(p => p.HouseNumber, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Flat)
+                    @Html.TextBoxFor(p => p.Flat, new { @class = "form-control" })
+                </div>
+
+                <button class="btn btn-primary" type="submit">Добавить</button>
+            }
+        </div>
+    </div>
+</div>

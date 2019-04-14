@@ -16,6 +16,7 @@ namespace Domain.Data
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Название района")]
         public string Ttile { get; set; }
 
         public virtual IEnumerable<Street> Streets { get; set; }
