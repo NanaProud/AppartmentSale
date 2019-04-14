@@ -22,6 +22,7 @@ namespace Domain.Data
             base.OnModelCreating(modelBuilder); // MUST go first.
 
             modelBuilder.HasDefaultSchema("SYSTEM"); // Use uppercase!
+
             modelBuilder.Entity<Owning>()
                         .HasKey(x => new { x.OwnerId, x.AppartmentId });
             modelBuilder.Entity<Owning>()

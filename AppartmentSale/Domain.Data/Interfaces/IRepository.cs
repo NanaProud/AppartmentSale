@@ -12,9 +12,10 @@ namespace Domain.Data
     /// <typeparam name="Entity"></typeparam>
     public interface IRepository<Entity> where Entity : class
     {
-        void Add(Entity entity);
-        void Edit(Entity entity);
-        void Delete(int id);
+        Task Add(Entity entity);
+        Task Edit(Entity entity);
+        Task Delete(int id);
         Task<Entity> Get(int id);
+        IEnumerable<Entity> GetAll();
     }
 }

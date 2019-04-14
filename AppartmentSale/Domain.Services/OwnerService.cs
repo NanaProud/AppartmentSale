@@ -63,17 +63,7 @@ namespace Domain.Services
             return owner;
         }
 
-        void IRepository<Owner>.Add(Owner entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IRepository<Owner>.Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IRepository<Owner>.Edit(Owner entity)
+        public IEnumerable<Owner> GetAll()
         {
             throw new NotImplementedException();
         }

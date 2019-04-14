@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using Domain.Data;
@@ -29,7 +30,7 @@ namespace Domain.Services
         /// </summary>
         /// <param name="appartment">Квартира</param>
         /// <returns></returns>
-        public async void Add(Appartment appartment)
+        public async Task Add(Appartment appartment)
         {
             _appartmentContext.Appartments.Add(appartment);
             await _appartmentContext.SaveChangesAsync();
@@ -40,7 +41,7 @@ namespace Domain.Services
         /// </summary>
         /// <param name="id">Id квартиры</param>
         /// <returns></returns>
-        public async void Delete(int id)
+        public async Task Delete(int id)
         {
             Appartment appartment = await _appartmentContext.Appartments.FindAsync(id);
             if (appartment != null)
@@ -53,7 +54,7 @@ namespace Domain.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async void Edit(Appartment appartment)
+        public async Task Edit(Appartment appartment)
         {
             _appartmentContext.Entry(appartment).State = EntityState.Modified;
             await _appartmentContext.SaveChangesAsync();
@@ -68,6 +69,15 @@ namespace Domain.Services
         {
             var appartment = await _appartmentContext.Appartments.FindAsync(id);
             return appartment;
+        }
+
+        /// <summary>
+        /// Получение списка всех квартир с указанием их владельцев
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Appartment> GetAll()
+        {
+            return _appartmentContext.Appartments.Include(p => p.Owners);
         }
     }
 }
