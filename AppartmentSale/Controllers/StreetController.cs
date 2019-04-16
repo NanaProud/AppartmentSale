@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AppartmentSale.ViewModels;
 using Domain.Data;
 using PagedList;
 using PagedList.Mvc;
@@ -29,7 +30,14 @@ namespace AppartmentSale.Controllers
         public ActionResult Index(int? page)
         {
             int pageNumber = (page ?? 1);
-            var listAreas = areaRepository.GetAll().ToList().ToPagedList(pageNumber, _pageSize);
+            var listAreas = streetRepository.GetAll()
+                .Select(p => new StreetViewModel()
+                {
+                    Id = p.Id,
+                    Title = p.Title,
+                    AreaName = p.Area.Ttile
+                })
+                .ToPagedList(pageNumber, _pageSize);
             return View(listAreas);
         }
     }
