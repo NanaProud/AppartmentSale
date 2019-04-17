@@ -42,5 +42,19 @@ namespace AppartmentSale.ViewModelParser
                 Title = model.Title
             };
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public static Street ParseCreateStreetViewModel(CreateStreetViewModel model)
+        {
+            return new Street()
+            {
+                AreaId = (int)model.Areas.SelectedValue,
+                Title = model.Title
+            };
+        }
     }
 }

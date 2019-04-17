@@ -8,7 +8,7 @@
 
 <h2>Список квартир</h2>
 
-@Html.ActionLink("Добавить улицу", "CreateArea", "Area", null, new { @class = "btn btn-danger" })
+@Html.ActionLink("Добавить улицу", "CreateStreet", "Street", null, new { @class = "btn btn-danger" })
 
 <div class="container" style="margin-top:1rem;">
     <div class="row">
@@ -34,7 +34,7 @@
                             @Html.ActionLink("Редактирование", "EditArea", "Area", new { id = item.Id }, new { @class = "btn btn-success" })
                         </td>
                         <td>
-                            <a href="/Street/Delete/@item.Id" id="deleteStreet" class="btn btn-danger">Удалить</a>
+                            <a href="/Street/DeleteStreet/@item.Id" id="deleteStreet" class="btn btn-danger">Удалить</a>
                         </td>
                     </tr>
                 }
@@ -43,11 +43,11 @@
             <br />
             Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
 
-            @Html.PagedListPager(Model, page => Url.Action("Index", "Street" new { page }))
+            @Html.PagedListPager(Model, page => Url.Action("Index", "Street", new { page }))
         </div>
     </div>
 </div>
 
 @section scripts{
-    <script src="@Url.Content("/Scripts/Javascripts/Area.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/Scripts/Javascripts/Street.js")" type="text/javascript"></script>
 }

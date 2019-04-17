@@ -98,5 +98,38 @@ namespace AppartmentSale.Controllers
             await streetRepository.Delete((int)id);
             return Redirect(Request.UrlReferrer.ToString());
         }
+
+        /// <summary>
+        /// GET-запрос на создание улицы 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult CreateStreet()
+        {
+            var areas = areaRepository.GetAll();
+            var createStreetModel = new CreateStreetViewModel()
+            {
+                Areas = new SelectList(areas, "Id", "Title")
+            };
+            return View(createStreetModel);
+        }
+
+        /// <summary>
+        /// POST-запрос на создание улицы в базе
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateStreet(CreateStreetViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var street = ParseCreateStreetViewModel(model);
+                await streetRepository.Add(street);
+                return RedirectToAction("Index", "Street");
+            }
+            return View(model);
+        }
     }
 }

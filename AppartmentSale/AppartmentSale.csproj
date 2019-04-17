@@ -237,6 +237,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Util\NinjectRegistration.cs" />
     <Compile Include="ViewModels\AppartmentViewModel.cs" />
+    <Compile Include="ViewModels\CreateStreetViewModel.cs" />
     <Compile Include="ViewModels\EditStreetViewModel.cs" />
     <Compile Include="ViewModels\StreetViewModel.cs" />
   </ItemGroup>
@@ -255,6 +256,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Javascripts\Street.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
