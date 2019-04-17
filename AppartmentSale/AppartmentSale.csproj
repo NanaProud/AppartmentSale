@@ -237,6 +237,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Util\NinjectRegistration.cs" />
     <Compile Include="ViewModels\AppartmentViewModel.cs" />
+    <Compile Include="ViewModels\EditStreetViewModel.cs" />
     <Compile Include="ViewModels\StreetViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -303,6 +304,7 @@
     <Content Include="Views\Area\CreateArea.cshtml" />
     <Content Include="Views\Area\EditArea.cshtml" />
     <Content Include="Views\Street\Index.cshtml" />
+    <Content Include="Views\Street\EditStreet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

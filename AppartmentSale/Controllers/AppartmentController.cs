@@ -9,6 +9,7 @@ using Domain.Data;
 using AppartmentSale.ViewModels;
 using System.Threading.Tasks;
 using AppartmentSale.ViewModelParser;
+using static AppartmentSale.ViewModelParser.ViewModelParser;
 
 namespace AppartmentSale.Controllers
 {
@@ -19,7 +20,6 @@ namespace AppartmentSale.Controllers
     {
         private static int _pageSize = 6;
         private readonly IAppartmentRepository appartmentRepository;
-        private readonly ViewModelParser.ViewModelParser viewModelParser;
         private readonly IStreetRepository streetRepository;
 
         /// <summary>
@@ -28,10 +28,9 @@ namespace AppartmentSale.Controllers
         /// <param name="appartmentRepository"></param>
         /// <param name="viewModelParser"></param>
         /// <param name="streetRepository"></param>
-        public AppartmentController(IAppartmentRepository appartmentRepository, ViewModelParser.ViewModelParser viewModelParser, IStreetRepository streetRepository)
+        public AppartmentController(IAppartmentRepository appartmentRepository, IStreetRepository streetRepository)
         {
             this.appartmentRepository = appartmentRepository;
-            this.viewModelParser = viewModelParser;
             this.streetRepository = streetRepository;
         }
 
@@ -78,7 +77,7 @@ namespace AppartmentSale.Controllers
         {
             if (ModelState.IsValid)
             {
-                var appartment = viewModelParser.ParseCreateAppartmentViewModel(model);
+                var appartment = ParseCreateAppartmentViewModel(model);
                 await appartmentRepository.Add(appartment);
                 return RedirectToAction("Index");
             }

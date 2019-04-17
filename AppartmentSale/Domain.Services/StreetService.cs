@@ -58,6 +58,11 @@ namespace AppartmentSale.Domain.Services
             await _appartmentContext.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Получение улицы по Id
+        /// </summary>
+        /// <param name="id">Id Улицы</param>
+        /// <returns></returns>
         public async Task<Street> Get(int id)
         {
             var street = await _appartmentContext.Streets.FindAsync(id);

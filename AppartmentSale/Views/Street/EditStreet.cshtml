@@ -1,23 +1,29 @@
 ﻿
 @{
-    ViewBag.Title = "Редактирование района";
+    ViewBag.Title = "Редактирование улицы";
 }
-
-@model Domain.Data.Area
-
+@model AppartmentSale.ViewModels.EditStreetViewModel
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            @using (Html.BeginForm("EditArea", "Area", FormMethod.Post))
+            @using (Html.BeginForm("EditStreet", "Street", FormMethod.Post))
             {
+                @Html.AntiForgeryToken()
                 @Html.HiddenFor(p => p.Id)
                 <div class="form-group">
                     @Html.LabelFor(p => p.Title)
                     @Html.TextBoxFor(p => p.Title, new { @class = "form-control" })
                     @Html.ValidationMessageFor(p => p.Title)
                 </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Areas)
+                    @Html.DropDownListFor(p => p.CurrentAreaId, Model.Areas)
+                    @Html.ValidationMessageFor(p => p.Areas)
+                </div>
                 <button class="btn btn-success" type="submit">Добавить</button>
             }
         </div>
     </div>
 </div>
+
+
