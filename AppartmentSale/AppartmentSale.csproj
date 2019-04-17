@@ -200,8 +200,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\StreetController.cs" />
+    <Compile Include="Controllers\TypDocumentController.cs" />
     <Compile Include="Domain.Services\AreaService.cs" />
     <Compile Include="Domain.Services\StreetService.cs" />
+    <Compile Include="Domain.Services\TypeDocumentService.cs" />
     <Compile Include="ViewModelParser\ViewModelParser.cs" />
     <Compile Include="ViewModels\CreateAppartmentModel.cs" />
     <Compile Include="Controllers\AppartmentController.cs" />
