@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
+    <Compile Include="Controllers\OwnerController.cs" />
     <Compile Include="Controllers\StreetController.cs" />
     <Compile Include="Controllers\TypDocumentController.cs" />
     <Compile Include="Domain.Services\AreaService.cs" />
@@ -239,8 +240,10 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Util\NinjectRegistration.cs" />
     <Compile Include="ViewModels\AppartmentViewModel.cs" />
+    <Compile Include="ViewModels\CreateOwnerViewModel.cs" />
     <Compile Include="ViewModels\CreateStreetViewModel.cs" />
     <Compile Include="ViewModels\EditStreetViewModel.cs" />
+    <Compile Include="ViewModels\OwnerViewModel.cs" />
     <Compile Include="ViewModels\StreetViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -312,6 +315,7 @@
     <Content Include="Views\TypDocument\CreateTypDocument.cshtml" />
     <Content Include="Views\TypDocument\Index.cshtml" />
     <Content Include="Views\TypDocument\EditTypeDocument.cshtml" />
+    <Content Include="Views\Owner\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

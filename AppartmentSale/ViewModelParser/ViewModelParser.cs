@@ -44,9 +44,9 @@ namespace AppartmentSale.ViewModelParser
         }
 
         /// <summary>
-        /// 
+        /// Парсинг создаваемой улицы
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">Создаваемая модель</param>
         /// <returns></returns>
         public static Street ParseCreateStreetViewModel(CreateStreetViewModel model)
         {
@@ -56,5 +56,18 @@ namespace AppartmentSale.ViewModelParser
                 Title = model.Title
             };
         }
+
+        public static Owner ParseCreateOwnerModelToOwner(CreateOwnerViewModel owner)
+        {
+            return new Owner()
+            {
+                Name = owner.Name,
+                Surname = owner.Surname,
+                MiddleName = owner.MiddleName,
+                BirthDay = owner.BirthDay,
+                 
+            };
+        }
+
     }
 }
