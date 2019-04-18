@@ -309,6 +309,9 @@
     <Content Include="Views\Area\EditArea.cshtml" />
     <Content Include="Views\Street\Index.cshtml" />
     <Content Include="Views\Street\EditStreet.cshtml" />
+    <Content Include="Views\TypDocument\CreateTypDocument.cshtml" />
+    <Content Include="Views\TypDocument\Index.cshtml" />
+    <Content Include="Views\TypDocument\EditTypeDocument.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
