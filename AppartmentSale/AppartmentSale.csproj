@@ -203,6 +203,7 @@
     <Compile Include="Controllers\StreetController.cs" />
     <Compile Include="Controllers\TypDocumentController.cs" />
     <Compile Include="Domain.Services\AreaService.cs" />
+    <Compile Include="Domain.Services\OwningRepository.cs" />
     <Compile Include="Domain.Services\StreetService.cs" />
     <Compile Include="Domain.Services\TypeDocumentService.cs" />
     <Compile Include="ViewModelParser\ViewModelParser.cs" />
