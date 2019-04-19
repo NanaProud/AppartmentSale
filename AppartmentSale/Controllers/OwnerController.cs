@@ -8,6 +8,7 @@ using AppartmentSale.ViewModels;
 using PagedList;
 using PagedList.Mvc;
 using System.Threading.Tasks;
+using static AppartmentSale.ViewModelParser.ViewModelParser;
 
 namespace AppartmentSale.Controllers
 {
@@ -15,6 +16,10 @@ namespace AppartmentSale.Controllers
     {
         private static int _pagesize = 6;
         private readonly IOwnerRepository ownerRepository;
+        private readonly ITypeDocumentRepository typeDocumentRepository;
+        /// <summary>
+        /// Список полов, для создания владельца
+        /// </summary>
         IDictionary<int, string> sexDictionary = new Dictionary<int, string>()
         {
             [1] = "Мужской",
@@ -25,9 +30,10 @@ namespace AppartmentSale.Controllers
         /// Внедрение зависимостей
         /// </summary>
         /// <param name="ownerRepository"></param>
-        public OwnerController(IOwnerRepository ownerRepository)
+        public OwnerController(IOwnerRepository ownerRepository, ITypeDocumentRepository typeDocumentRepository)
         {
             this.ownerRepository = ownerRepository;
+            this.typeDocumentRepository = typeDocumentRepository;
         }
 
         /// <summary>
@@ -58,12 +64,7 @@ namespace AppartmentSale.Controllers
         [HttpGet]
         public ActionResult CreateOwner()
         {
-            var sexForDisplay = sexDictionary.Select(p => new
-            {
-                Id = p.Key,
-                Title = p.Value
-            });
-            SelectList sexList = new SelectList(sexForDisplay, "Id", "Title");
+            var sexList = this.InitSexList();
             CreateOwnerViewModel createOwnerViewModel = new CreateOwnerViewModel() { Gender = sexList };
             return View(createOwnerViewModel);
         }
@@ -71,16 +72,93 @@ namespace AppartmentSale.Controllers
         /// <summary>
         /// POST-запрос на создание владельца
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">Модель с параметрами инициализации владельца</param>
         /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> CreateOwner(CreateOwnerViewModel model)
         {
             if (ModelState.IsValid)
             {
-               
+                Owner owner = ParseCreateOwnerModelToOwner(model);
+                await ownerRepository.Add(owner);
+                return RedirectToAction("Index", "Owner");
             }
             return View(model);
+        }
+
+        /// <summary>
+        /// Инициализация списка полов
+        /// </summary>
+        /// <returns></returns>
+        [NonAction]
+        private SelectList InitSexList()
+        {
+            var sexForDisplay = sexDictionary.Select(p => new
+            {
+                Id = p.Key,
+                Title = p.Value
+            });
+            SelectList sexList = new SelectList(sexForDisplay, "Id", "Title");
+            return sexList;
+        }
+
+        /// <summary>
+        /// Get-Запрос на редактирование владельца
+        /// </summary>
+        /// <param name="id">Id владельца</param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult> EditOwner(int? id)
+        {
+            if (id is null)
+                return HttpNotFound();
+            var owner = await ownerRepository.Get((int)id);
+            var sexList = new SelectList(this.InitSexList(), owner.Gender);
+            var documentList = typeDocumentRepository.GetAll();
+            var editOwnerModel = new EditOwnerViewModel()
+            {
+                Id = owner.Id,
+                BirthDay = owner.BirthDay,
+                DocumentNumber = owner.DocumentNumber,
+                DocumentSerial = owner.DocumentSerial,
+                Name = owner.Name,
+                Surname = owner.Surname,
+                MiddleName = owner.MiddleName,
+                Gender = sexList,
+                DocumentType = new SelectList(documentList, "Id", "Name", owner.DocumentId)
+            };
+            return View(editOwnerModel);
+        }
+
+        /// <summary>
+        /// POST-запрос на редактирование владельца
+        /// </summary>
+        /// <param name="editOwnerViewModel">Модель с редактируемыми данными</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult> EditOwner(EditOwnerViewModel editOwnerViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var editOwner = ParseEditOwnerModel(editOwnerViewModel);
+                await ownerRepository.Edit(editOwner);
+                return RedirectToAction("Index", "Owner");
+            }
+            return View(editOwnerViewModel);
+        }
+
+        /// <summary>
+        /// Удаление владельца квартир
+        /// </summary>
+        /// <param name="id">Id владельца</param>
+        /// <returns></returns>
+        [HttpDelete]
+        public async Task<ActionResult> DeleteOwner(int? id)
+        {
+            if (id is null)
+                throw new NullReferenceException(nameof(id));
+            await ownerRepository.Delete((int)id);
+            return RedirectToAction("Index", "Owner");
         }
     }
 }

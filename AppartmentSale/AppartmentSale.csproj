@@ -242,6 +242,7 @@
     <Compile Include="ViewModels\AppartmentViewModel.cs" />
     <Compile Include="ViewModels\CreateOwnerViewModel.cs" />
     <Compile Include="ViewModels\CreateStreetViewModel.cs" />
+    <Compile Include="ViewModels\EditOwnerViewModel.cs" />
     <Compile Include="ViewModels\EditStreetViewModel.cs" />
     <Compile Include="ViewModels\OwnerViewModel.cs" />
     <Compile Include="ViewModels\StreetViewModel.cs" />

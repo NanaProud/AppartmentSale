@@ -57,6 +57,11 @@ namespace AppartmentSale.ViewModelParser
             };
         }
 
+        /// <summary>
+        /// Парсинг создаваемого владельца
+        /// </summary>
+        /// <param name="owner">Модель владельца</param>
+        /// <returns></returns>
         public static Owner ParseCreateOwnerModelToOwner(CreateOwnerViewModel owner)
         {
             return new Owner()
@@ -65,8 +70,17 @@ namespace AppartmentSale.ViewModelParser
                 Surname = owner.Surname,
                 MiddleName = owner.MiddleName,
                 BirthDay = owner.BirthDay,
-                 
+                DocumentId = (int)owner.DocumentType.SelectedValue,
+                DocumentSerial = owner.DocumentSerial,
+                Gender = (int)owner.Gender.SelectedValue
             };
+        }
+
+        public static Owner ParseEditOwnerModel(EditOwnerViewModel editOwnerViewModel)
+        {
+            var owner = ParseCreateOwnerModelToOwner(editOwnerViewModel);
+            owner.Id = editOwnerViewModel.Id;
+            return owner;
         }
 
     }
