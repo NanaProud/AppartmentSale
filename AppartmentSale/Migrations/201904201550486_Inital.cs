@@ -3,12 +3,12 @@ namespace AppartmentSale.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class Inital : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "SYSTEM.Appartments",
+                "SABINA.Appartments",
                 c => new
                     {
                         Id = c.Decimal(nullable: false, precision: 10, scale: 0, identity: true),
@@ -18,11 +18,11 @@ namespace AppartmentSale.Migrations
                         Flat = c.Decimal(nullable: false, precision: 10, scale: 0),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("SYSTEM.Streets", t => t.StreetId, cascadeDelete: true)
+                .ForeignKey("SABINA.Streets", t => t.StreetId, cascadeDelete: true)
                 .Index(t => t.StreetId);
             
             CreateTable(
-                "SYSTEM.OwningsTable",
+                "SABINA.OwningsTable",
                 c => new
                     {
                         OwnerId = c.Decimal(nullable: false, precision: 10, scale: 0),
@@ -33,13 +33,13 @@ namespace AppartmentSale.Migrations
                         ShareOwning = c.Single(nullable: false),
                     })
                 .PrimaryKey(t => new { t.OwnerId, t.AppartmentId })
-                .ForeignKey("SYSTEM.Appartments", t => t.AppartmentId, cascadeDelete: true)
-                .ForeignKey("SYSTEM.Owners", t => t.OwnerId, cascadeDelete: true)
+                .ForeignKey("SABINA.Appartments", t => t.AppartmentId, cascadeDelete: true)
+                .ForeignKey("SABINA.Owners", t => t.OwnerId, cascadeDelete: true)
                 .Index(t => t.OwnerId)
                 .Index(t => t.AppartmentId);
             
             CreateTable(
-                "SYSTEM.Owners",
+                "SABINA.Owners",
                 c => new
                     {
                         Id = c.Decimal(nullable: false, precision: 10, scale: 0, identity: true),
@@ -53,11 +53,11 @@ namespace AppartmentSale.Migrations
                         DocumentNumber = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("SYSTEM.TypeDocuments", t => t.DocumentId, cascadeDelete: true)
+                .ForeignKey("SABINA.TypeDocuments", t => t.DocumentId, cascadeDelete: true)
                 .Index(t => t.DocumentId);
             
             CreateTable(
-                "SYSTEM.TypeDocuments",
+                "SABINA.TypeDocuments",
                 c => new
                     {
                         Id = c.Decimal(nullable: false, precision: 10, scale: 0, identity: true),
@@ -66,7 +66,7 @@ namespace AppartmentSale.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "SYSTEM.Streets",
+                "SABINA.Streets",
                 c => new
                     {
                         Id = c.Decimal(nullable: false, precision: 10, scale: 0, identity: true),
@@ -74,15 +74,15 @@ namespace AppartmentSale.Migrations
                         AreaId = c.Decimal(nullable: false, precision: 10, scale: 0),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("SYSTEM.Areas", t => t.AreaId, cascadeDelete: true)
+                .ForeignKey("SABINA.Areas", t => t.AreaId, cascadeDelete: true)
                 .Index(t => t.AreaId);
             
             CreateTable(
-                "SYSTEM.Areas",
+                "SABINA.Areas",
                 c => new
                     {
                         Id = c.Decimal(nullable: false, precision: 10, scale: 0, identity: true),
-                        Ttile = c.String(nullable: false),
+                        Title = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -90,22 +90,22 @@ namespace AppartmentSale.Migrations
         
         public override void Down()
         {
-            DropForeignKey("SYSTEM.Appartments", "StreetId", "SYSTEM.Streets");
-            DropForeignKey("SYSTEM.Streets", "AreaId", "SYSTEM.Areas");
-            DropForeignKey("SYSTEM.OwningsTable", "OwnerId", "SYSTEM.Owners");
-            DropForeignKey("SYSTEM.Owners", "DocumentId", "SYSTEM.TypeDocuments");
-            DropForeignKey("SYSTEM.OwningsTable", "AppartmentId", "SYSTEM.Appartments");
-            DropIndex("SYSTEM.Streets", new[] { "AreaId" });
-            DropIndex("SYSTEM.Owners", new[] { "DocumentId" });
-            DropIndex("SYSTEM.OwningsTable", new[] { "AppartmentId" });
-            DropIndex("SYSTEM.OwningsTable", new[] { "OwnerId" });
-            DropIndex("SYSTEM.Appartments", new[] { "StreetId" });
-            DropTable("SYSTEM.Areas");
-            DropTable("SYSTEM.Streets");
-            DropTable("SYSTEM.TypeDocuments");
-            DropTable("SYSTEM.Owners");
-            DropTable("SYSTEM.OwningsTable");
-            DropTable("SYSTEM.Appartments");
+            DropForeignKey("SABINA.Appartments", "StreetId", "SABINA.Streets");
+            DropForeignKey("SABINA.Streets", "AreaId", "SABINA.Areas");
+            DropForeignKey("SABINA.OwningsTable", "OwnerId", "SABINA.Owners");
+            DropForeignKey("SABINA.Owners", "DocumentId", "SABINA.TypeDocuments");
+            DropForeignKey("SABINA.OwningsTable", "AppartmentId", "SABINA.Appartments");
+            DropIndex("SABINA.Streets", new[] { "AreaId" });
+            DropIndex("SABINA.Owners", new[] { "DocumentId" });
+            DropIndex("SABINA.OwningsTable", new[] { "AppartmentId" });
+            DropIndex("SABINA.OwningsTable", new[] { "OwnerId" });
+            DropIndex("SABINA.Appartments", new[] { "StreetId" });
+            DropTable("SABINA.Areas");
+            DropTable("SABINA.Streets");
+            DropTable("SABINA.TypeDocuments");
+            DropTable("SABINA.Owners");
+            DropTable("SABINA.OwningsTable");
+            DropTable("SABINA.Appartments");
         }
     }
 }

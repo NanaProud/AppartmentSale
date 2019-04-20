@@ -200,12 +200,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AreaController.cs" />
     <Compile Include="Controllers\OwnerController.cs" />
+    <Compile Include="Controllers\OwningController.cs" />
     <Compile Include="Controllers\StreetController.cs" />
     <Compile Include="Controllers\TypDocumentController.cs" />
     <Compile Include="Domain.Services\AreaService.cs" />
     <Compile Include="Domain.Services\OwningRepository.cs" />
     <Compile Include="Domain.Services\StreetService.cs" />
     <Compile Include="Domain.Services\TypeDocumentService.cs" />
+    <Compile Include="Migrations\201904201550486_Inital.cs" />
+    <Compile Include="Migrations\201904201550486_Inital.Designer.cs">
+      <DependentUpon>201904201550486_Inital.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewModelParser\ViewModelParser.cs" />
     <Compile Include="ViewModels\CreateAppartmentModel.cs" />
     <Compile Include="Controllers\AppartmentController.cs" />
@@ -229,10 +234,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904131839168_Initial.cs" />
-    <Compile Include="Migrations\201904131839168_Initial.Designer.cs">
-      <DependentUpon>201904131839168_Initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -246,6 +247,7 @@
     <Compile Include="ViewModels\EditOwnerViewModel.cs" />
     <Compile Include="ViewModels\EditStreetViewModel.cs" />
     <Compile Include="ViewModels\OwnerViewModel.cs" />
+    <Compile Include="ViewModels\OwningViewModel.cs" />
     <Compile Include="ViewModels\StreetViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -318,6 +320,7 @@
     <Content Include="Views\TypDocument\Index.cshtml" />
     <Content Include="Views\TypDocument\EditTypeDocument.cshtml" />
     <Content Include="Views\Owner\Index.cshtml" />
+    <Content Include="Views\Owning\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -336,8 +339,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904131839168_Initial.resx">
-      <DependentUpon>201904131839168_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904201550486_Inital.resx">
+      <DependentUpon>201904201550486_Inital.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

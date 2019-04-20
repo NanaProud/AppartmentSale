@@ -1,20 +1,19 @@
 using Domain.Data;
-using System;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Linq;
-
 namespace AppartmentSale.Migrations
 {
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<AppartmentContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(AppartmentContext appartmentContext)
+        protected override void Seed(AppartmentContext context)
         {
             //  This method will be called after migrating to the latest version.
 

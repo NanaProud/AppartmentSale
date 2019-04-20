@@ -8,20 +8,20 @@ namespace Domain.Data
 {
     public class AppartmentContext : DbContext
     {
-        public DbSet<Appartment> Appartments { get; set; }
         public DbSet<Area> Areas { get; set; }
-        public DbSet<Owner> Owners { get; set; }
-        public DbSet<Owning> Ownings { get; set; }
         public DbSet<Street> Streets { get; set; }
         public DbSet<TypeDocument> TypeDocuments { get; set; }
+        public DbSet<Owner> Owners { get; set; }
+        public DbSet<Appartment> Appartments { get; set; }
+        public DbSet<Owning> Ownings { get; set; }
 
         public AppartmentContext() : base("OracleDbContext") { }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder); // MUST go first.
+            base.OnModelCreating(modelBuilder);
 
-            modelBuilder.HasDefaultSchema("SYSTEM"); // Use uppercase!
+           modelBuilder.HasDefaultSchema("SABINA");
 
             modelBuilder.Entity<Owning>()
                         .HasKey(x => new { x.OwnerId, x.AppartmentId });

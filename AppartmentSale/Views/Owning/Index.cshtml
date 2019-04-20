@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Список владений";
+}
+
+@using PagedList.Mvc;
+@model PagedList.IPagedList<AppartmentSale.ViewModels.OwningViewModel>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table>
+                <tr>
+                    <th>
+                        Квартира
+                    </th>
+                    <th>
+                        Владельцы
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Appartment.Street.Title, @item.Appartment.Street.Area.Title, район
+                            Дом @item.Appartment.HouseNumber, @item.Appartment.Flat квартира
+                        </td>
+                        <td>
+                            @foreach(var owner in item.Owners)
+                            {
+                                String.Join(" ", owner.Name, owner.Surname, owner.MiddleName,"<br />")
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+
