@@ -32,7 +32,8 @@
                             @Html.ActionLink("Редактирование", "EditArea", "Area", new { id = item.Id }, new { @class = "btn btn-success" })
                         </td>
                         <td>
-                            <a href="/Area/Delete/@item.Id" id="deleteArea" class="btn btn-danger">Удалить</a>
+                            @Html.AntiForgeryToken()
+                            <a href="/Area/DeleteArea/@item.Id" id="deleteArea" class="btn btn-danger">Удалить</a>
                         </td>
                     </tr>
                 }

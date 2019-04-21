@@ -67,7 +67,7 @@ namespace AppartmentSale.Controllers
         public async Task<ActionResult> EditArea(int id)
         {
             var area = await areaRepository.Get(id);
-            return View();
+            return View(area);
         }
 
         /// <summary>
@@ -91,12 +91,13 @@ namespace AppartmentSale.Controllers
         /// POST-запрос на редактирование
         /// </summary>
         /// <param name="id">id Района</param>
-        /// <returns></returns>
+        /// <returns>Куда перенаправлять в случае успешного удаления</returns>
         [HttpPost]
-        public async Task<ActionResult> DeleteArea(int id)
+        [ValidateAntiForgeryToken]
+        public async Task<string> DeleteArea(int id)
         {
             await areaRepository.Delete(id);
-            return Redirect(Request.UrlReferrer.ToString());
+            return Request.UrlReferrer.ToString();
         }
     }
 }

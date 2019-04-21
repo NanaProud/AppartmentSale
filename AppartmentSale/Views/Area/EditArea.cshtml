@@ -10,6 +10,7 @@
         <div class="col-md-12">
             @using (Html.BeginForm("EditArea", "Area", FormMethod.Post))
             {
+                @Html.AntiForgeryToken()
                 @Html.HiddenFor(p => p.Id)
                 <div class="form-group">
                     @Html.LabelFor(p => p.Title)

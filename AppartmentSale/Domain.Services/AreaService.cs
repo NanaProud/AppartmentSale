@@ -44,7 +44,10 @@ namespace AppartmentSale.Domain.Services
         {
             var deleteArea = await _appartmentContext.Areas.FindAsync(id);
             if (deleteArea != null)
+            {
                 _appartmentContext.Areas.Remove(deleteArea);
+                await _appartmentContext.SaveChangesAsync();
+            }
         }
 
         /// <summary>

@@ -11,9 +11,9 @@
             {
                 @Html.AntiForgeryToken()
                 <div class="form-group">
-                    @Html.LabelFor(p => p.Ttile)
-                    @Html.TextBoxFor(p => p.Ttile, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(p => p.Ttile)
+                    @Html.LabelFor(p => p.Title)
+                    @Html.TextBoxFor(p => p.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Title)
                 </div>
                 <button class="btn btn-danger" type="submit">Добавить</button>
             }
