@@ -17,9 +17,11 @@ namespace AppartmentSale.Controllers
     /// </summary>
     public class StreetController : Controller
     {
+        #region Private Members
         private static int _pageSize = 6;
         private readonly IStreetRepository streetRepository;
         private readonly IAreaRepository areaRepository;
+        #endregion
 
         public StreetController(IStreetRepository streetRepository, IAreaRepository areaRepository)
         {
@@ -109,8 +111,10 @@ namespace AppartmentSale.Controllers
             var areas = areaRepository.GetAll();
             var createStreetModel = new CreateStreetViewModel()
             {
+                Title = string.Empty,
                 Areas = new SelectList(areas, "Id", "Title")
             };
+            ViewBag.Areas = createStreetModel.Areas;
             return View(createStreetModel);
         }
 
@@ -129,6 +133,8 @@ namespace AppartmentSale.Controllers
                 await streetRepository.Add(street);
                 return RedirectToAction("Index", "Street");
             }
+            var areas = areaRepository.GetAll();
+            model.Areas = new SelectList(areas, "Id", "Title", model.AreaId);
             return View(model);
         }
     }

@@ -321,6 +321,7 @@
     <Content Include="Views\TypDocument\EditTypeDocument.cshtml" />
     <Content Include="Views\Owner\Index.cshtml" />
     <Content Include="Views\Owning\Index.cshtml" />
+    <Content Include="Views\Street\CreateStreet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

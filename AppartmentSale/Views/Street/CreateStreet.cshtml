@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Регистрация улицы";
+}
+
+@model AppartmentSale.ViewModels.CreateStreetViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("CreateStreet", "Street", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Title)
+                    @Html.TextBoxFor(p => p.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Title)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Areas)
+                    @Html.DropDownListFor(p => p.AreaId,Model.Areas, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Areas)
+                </div>
+                <button class="btn btn-danger" type="submit">Добавить</button>
+            }
+        </div>
+    </div>
+</div>
