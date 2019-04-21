@@ -1,7 +1,22 @@
 ﻿
 @{
-    ViewBag.Title = "CreateTypDocument";
+    ViewBag.Title = "Создание документа";
 }
+@model Domain.Data.TypeDocument
 
-<h2>CreateTypDocument</h2>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("CreateTypDocument", "TypDocument", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Name)
+                    @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Name)
+                </div>
+                <button class="btn btn-danger" type="submit">Добавить</button>
+            }
+        </div>
+    </div>
+</div>

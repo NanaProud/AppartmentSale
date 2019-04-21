@@ -1,7 +1,23 @@
-﻿
-@{
-    ViewBag.Title = "EditTypeDocument";
+﻿@{
+    ViewBag.Title = "Редактирование документа";
 }
 
-<h2>EditTypeDocument</h2>
+@model Domain.Data.TypeDocument
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("EditTypeDocument", "TypDocument", FormMethod.Post))
+            {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(p => p.Id)
+            <div class="form-group">
+                @Html.LabelFor(p => p.Name)
+                @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.Name)
+            </div>
+            <button class="btn btn-success" type="submit">Добавить</button>
+            }
+        </div>
+    </div>
+</div>

@@ -71,23 +71,10 @@ namespace AppartmentSale.Controllers
             if (ModelState.IsValid)
             {
                 await typeDocumentRepository.Add(typeDocument);
-                return RedirectToAction("Index", "TypeDocument");
+                return RedirectToAction("Index", "TypDocument");
             }
             return View(typeDocument);
         }
-
-        /// <summary>
-        /// Редактирование района
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet]
-        public async Task<ActionResult> EditTypeDocument(int id)
-        {
-            var typeDocument = await typeDocumentRepository.Get(id);
-            return View(typeDocument);
-        }
-
 
         /// <summary>
         /// POST-запрос на редактирование типа-документа
@@ -101,7 +88,7 @@ namespace AppartmentSale.Controllers
             if (ModelState.IsValid)
             {
                 await typeDocumentRepository.Edit(typeDocument);
-                return RedirectToAction("Index", "TypeDocument");
+                return RedirectToAction("Index", "TypDocument");
             }
             return View(typeDocument);
         }
@@ -112,10 +99,10 @@ namespace AppartmentSale.Controllers
         /// <param name="id">id типа-документа</param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult> DeleteTypeDocument(int id)
+        public async Task<string> DeleteTypeDocument(int id)
         {
             await typeDocumentRepository.Delete(id);
-            return Redirect(Request.UrlReferrer.ToString());
+            return Request.UrlReferrer.ToString();
         }
     }
 }
