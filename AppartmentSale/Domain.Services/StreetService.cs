@@ -44,7 +44,10 @@ namespace AppartmentSale.Domain.Services
         {
             var deleteStreet = await _appartmentContext.Streets.FindAsync(id);
             if (deleteStreet != null)
+            {
                 _appartmentContext.Streets.Remove(deleteStreet);
+                await _appartmentContext.SaveChangesAsync();
+            }
         }
 
         /// <summary>

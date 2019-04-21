@@ -31,7 +31,7 @@
                         </td>
                         <th>@item.AreaName</th>
                         <td>
-                            @Html.ActionLink("Редактирование", "EditArea", "Area", new { id = item.Id }, new { @class = "btn btn-success" })
+                            @Html.ActionLink("Редактирование", "EditStreet", "Street", new { id = item.Id }, new { @class = "btn btn-success" })
                         </td>
                         <td>
                             <a href="/Street/DeleteStreet/@item.Id" id="deleteStreet" class="btn btn-danger">Удалить</a>

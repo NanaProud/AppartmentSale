@@ -38,7 +38,7 @@ namespace AppartmentSale.ViewModelParser
             return new Street()
             {
                 Id = model.Id,
-                AreaId = (int)model.Areas.SelectedValue,
+                AreaId = model.CurrentAreaId,
                 Title = model.Title
             };
         }

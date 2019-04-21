@@ -9,6 +9,12 @@
             url: url,
             data: {
                 __RequestVerificationToken: token
+            },
+            success: function (urlRedirect) {
+                window.location = urlRedirect;
+            },
+            error: function (error) {
+                alert(error);
             }
         });
     }

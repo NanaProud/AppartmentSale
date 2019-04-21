@@ -66,7 +66,7 @@ namespace AppartmentSale.Controllers
                 CurrentAreaId = selectedStreet.AreaId,
                 Areas = new SelectList(areas, "Id", "Title", selectedStreet.Id)
             };
-            return View(selectedStreet);
+            return View(selectedViewModel);
         }
 
         /// <summary>
@@ -84,6 +84,8 @@ namespace AppartmentSale.Controllers
                 await streetRepository.Edit(editStreet);
                 return RedirectToAction("Index", "Street");
             }
+            var areas = areaRepository.GetAll();
+            model.Areas = new SelectList(areas, "Id", "Title", model.CurrentAreaId);
             return View(model);
         }
 
@@ -93,12 +95,12 @@ namespace AppartmentSale.Controllers
         /// <param name="id">Id улицы</param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult> DeleteStreet(int? id)
+        public async Task<string> DeleteStreet(int? id)
         {
             if (id is null)
                 throw new NullReferenceException(nameof(id));
             await streetRepository.Delete((int)id);
-            return Redirect(Request.UrlReferrer.ToString());
+            return Request.UrlReferrer.ToString();
         }
 
         /// <summary>
