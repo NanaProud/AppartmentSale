@@ -64,9 +64,25 @@ namespace AppartmentSale.Controllers
         [HttpGet]
         public ActionResult CreateOwner()
         {
-            var sexList = this.InitSexList();
-            CreateOwnerViewModel createOwnerViewModel = new CreateOwnerViewModel() { Gender = sexList };
+            CreateOwnerViewModel createOwnerViewModel = this.GenerateCreateOwnerViewModel();
             return View(createOwnerViewModel);
+        }
+
+        /// <summary>
+        /// Генерация Модели
+        /// </summary>
+        /// <returns></returns>
+        [NonAction]
+        private CreateOwnerViewModel GenerateCreateOwnerViewModel()
+        {
+            var sexList = this.InitSexList();
+            IEnumerable<TypeDocument> typeDocuments = typeDocumentRepository.GetAll().ToList();
+            CreateOwnerViewModel createOwnerViewModel = new CreateOwnerViewModel()
+            {
+                Gender = sexList,
+                DocumentType = new SelectList(typeDocuments, "Id", "Name")
+            };
+            return createOwnerViewModel;
         }
 
         /// <summary>
@@ -83,6 +99,10 @@ namespace AppartmentSale.Controllers
                 await ownerRepository.Add(owner);
                 return RedirectToAction("Index", "Owner");
             }
+            var sexList = this.InitSexList().Select(e => new { Id = e.Value, Title = e.Text }).ToList();
+            model.Gender = new SelectList(sexList, "Id", "Title", model.GenderId);
+            IEnumerable<TypeDocument> typeDocuments = typeDocumentRepository.GetAll().ToList();
+            model.DocumentType = new SelectList(typeDocuments, "Id", "Name", model.DocumentId);
             return View(model);
         }
 

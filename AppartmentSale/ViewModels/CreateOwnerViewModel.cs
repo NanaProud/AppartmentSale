@@ -17,7 +17,6 @@ namespace AppartmentSale.ViewModels
         [Display(Name = "Фамилия")]
         public string Surname { get; set; }
 
-        [Required]
         [Display(Name = "Отчество")]
         public string MiddleName { get; set; }
 
@@ -25,13 +24,16 @@ namespace AppartmentSale.ViewModels
         [Display(Name = "Дата рождения")]
         public DateTime BirthDay { get; set; }
 
-        [Required]
-        [Display(Name = "Пол")]
         public SelectList Gender { get; set; }
+
+        [Display(Name = "Пол")]
+        public int GenderId { get; set; }
+
+        public SelectList DocumentType { get; set; }
 
         [Required]
         [Display(Name = "Тип документа")]
-        public SelectList DocumentType { get; set; }
+        public int DocumentId { get; set; }
 
         [Required]
         [Display(Name = "Серия документа")]

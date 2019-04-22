@@ -65,7 +65,7 @@ namespace Domain.Services
 
         public IEnumerable<Owner> GetAll()
         {
-            throw new NotImplementedException();
+            return _appartmentContext.Owners;
         }
     }
 }

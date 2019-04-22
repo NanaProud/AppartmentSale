@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Создание владельца";
+}
+
+@model AppartmentSale.ViewModels.CreateOwnerViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("CreateOwner", "Owner", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Name)
+                    @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Name)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.Surname)
+                    @Html.TextBoxFor(p => p.Surname, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Surname)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.MiddleName)
+                    @Html.TextBoxFor(p => p.MiddleName, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.GenderId)
+                    @Html.DropDownListFor(p => p.GenderId, Model.Gender, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.GenderId)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.BirthDay)
+                    @Html.TextBoxFor(p => p.BirthDay, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.BirthDay)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.DocumentId)
+                    @Html.DropDownListFor(p => p.DocumentId, Model.DocumentType, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.DocumentId)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.DocumentSerial)
+                    @Html.TextBoxFor(p => p.DocumentSerial, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.DocumentSerial)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(p => p.DocumentNumber)
+                    @Html.TextBoxFor(p => p.DocumentNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.DocumentNumber)
+                </div>
+                <button type="submit" class="btn btn-danger">Добавить</button>
+            }
+        </div>
+    </div>
+</div>
+

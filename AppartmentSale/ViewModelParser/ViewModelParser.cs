@@ -70,9 +70,10 @@ namespace AppartmentSale.ViewModelParser
                 Surname = owner.Surname,
                 MiddleName = owner.MiddleName,
                 BirthDay = owner.BirthDay,
-                DocumentId = (int)owner.DocumentType.SelectedValue,
+                DocumentId = owner.DocumentId,
                 DocumentSerial = owner.DocumentSerial,
-                Gender = (int)owner.Gender.SelectedValue
+                DocumentNumber = owner.DocumentNumber,
+                Gender = owner.GenderId
             };
         }
 
