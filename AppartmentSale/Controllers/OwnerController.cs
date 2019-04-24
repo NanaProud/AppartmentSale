@@ -80,7 +80,8 @@ namespace AppartmentSale.Controllers
             CreateOwnerViewModel createOwnerViewModel = new CreateOwnerViewModel()
             {
                 Gender = sexList,
-                DocumentType = new SelectList(typeDocuments, "Id", "Name")
+                DocumentType = new SelectList(typeDocuments, "Id", "Name"),
+                BirthDay = DateTime.Now
             };
             return createOwnerViewModel;
         }
@@ -133,7 +134,7 @@ namespace AppartmentSale.Controllers
             if (id is null)
                 return HttpNotFound();
             var owner = await ownerRepository.Get((int)id);
-            var sexList = new SelectList(this.InitSexList(), owner.Gender);
+            var sexList = this.InitSexList().Select(s => new { Id = s.Value, Title = s.Text }).ToList();
             var documentList = typeDocumentRepository.GetAll();
             var editOwnerModel = new EditOwnerViewModel()
             {
@@ -144,7 +145,7 @@ namespace AppartmentSale.Controllers
                 Name = owner.Name,
                 Surname = owner.Surname,
                 MiddleName = owner.MiddleName,
-                Gender = sexList,
+                Gender = new SelectList(sexList, "Id", "Title",owner.Gender),
                 DocumentType = new SelectList(documentList, "Id", "Name", owner.DocumentId)
             };
             return View(editOwnerModel);

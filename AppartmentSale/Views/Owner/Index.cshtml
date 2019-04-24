@@ -45,6 +45,9 @@
                                 @item.DocumentSerial
                                 @item.TypeDocument.Name
                             </td>
+                            <td>
+                                @Html.ActionLink("Редактировать", "EditOwner", "Owner", new { id = item.Id }, new { @class = "btn btn-success" })
+                            </td>
                         </tr>
                     }
                 </table>
