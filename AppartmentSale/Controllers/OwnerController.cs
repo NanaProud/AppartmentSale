@@ -145,7 +145,7 @@ namespace AppartmentSale.Controllers
                 Name = owner.Name,
                 Surname = owner.Surname,
                 MiddleName = owner.MiddleName,
-                Gender = new SelectList(sexList, "Id", "Title",owner.Gender),
+                Gender = new SelectList(sexList, "Id", "Title", owner.Gender),
                 DocumentType = new SelectList(documentList, "Id", "Name", owner.DocumentId)
             };
             return View(editOwnerModel);
@@ -165,6 +165,12 @@ namespace AppartmentSale.Controllers
                 await ownerRepository.Edit(editOwner);
                 return RedirectToAction("Index", "Owner");
             }
+            var sexList = this.InitSexList();
+            var documentList = typeDocumentRepository.GetAll();
+
+            sexList.FirstOrDefault(p => p.Value == editOwnerViewModel.GenderId.ToString()).Selected = true;
+            editOwnerViewModel.Gender = sexList;
+            editOwnerViewModel.DocumentType = new SelectList(documentList, "Id", "Name", editOwnerViewModel.DocumentId);
             return View(editOwnerViewModel);
         }
 
